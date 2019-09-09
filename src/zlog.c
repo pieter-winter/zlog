@@ -639,7 +639,7 @@ void vzlog(zlog_category_t * category,
 	 * For speed up, if one log will not be ouput,
 	 * There is no need to aquire rdlock.
 	 */
-	if (zlog_category_needless_level(category, level)) return;
+	// promoted to macro call: if (zlog_category_needless_level(category, level)) return;
 
 	pthread_rwlock_rdlock(&zlog_env_lock);
 
@@ -686,7 +686,7 @@ void hzlog(zlog_category_t *category,
 {
 	zlog_thread_t *a_thread;
 
-	if (zlog_category_needless_level(category, level)) return;
+	// promoted to macro call: if (zlog_category_needless_level(category, level)) return;
 
 	pthread_rwlock_rdlock(&zlog_env_lock);
 
@@ -842,7 +842,7 @@ void zlog(zlog_category_t * category,
 	zlog_thread_t *a_thread;
 	va_list args;
 
-	if (category && zlog_category_needless_level(category, level)) return;
+	// promoted to macro call: if (category && zlog_category_needless_level(category, level)) return;
 
 	pthread_rwlock_rdlock(&zlog_env_lock);
 
