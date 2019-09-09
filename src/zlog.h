@@ -106,21 +106,27 @@ typedef enum {
 #if defined __STDC_VERSION__ && __STDC_VERSION__ >= 199901L
 /* zlog macros */
 #define zlog_fatal(cat, ...) \
+	if (zlog_fatal_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_FATAL, __VA_ARGS__)
 #define zlog_error(cat, ...) \
+	if (zlog_error_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_ERROR, __VA_ARGS__)
 #define zlog_warn(cat, ...) \
+	if (zlog_warn_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_WARN, __VA_ARGS__)
 #define zlog_notice(cat, ...) \
+	if (zlog_notice_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_NOTICE, __VA_ARGS__)
 #define zlog_info(cat, ...) \
+	if (zlog_info_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_INFO, __VA_ARGS__)
 #define zlog_debug(cat, ...) \
+	if (zlog_debug_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_DEBUG, __VA_ARGS__)
 /* dzlog macros */
@@ -145,21 +151,27 @@ typedef enum {
 #elif defined __GNUC__
 /* zlog macros */
 #define zlog_fatal(cat, format, args...) \
+	if (zlog_fatal_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_FATAL, format, ##args)
 #define zlog_error(cat, format, args...) \
+	if (zlog_error_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_ERROR, format, ##args)
 #define zlog_warn(cat, format, args...) \
+	if (zlog_warn_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_WARN, format, ##args)
 #define zlog_notice(cat, format, args...) \
+	if (zlog_notice_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_NOTICE, format, ##args)
 #define zlog_info(cat, format, args...) \
+	if (zlog_info_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_INFO, format, ##args)
 #define zlog_debug(cat, format, args...) \
+	if (zlog_debug_enabled(cat)) \
 	zlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_DEBUG, format, ##args)
 /* dzlog macros */
@@ -185,41 +197,53 @@ typedef enum {
 
 /* vzlog macros */
 #define vzlog_fatal(cat, format, args) \
+	if (zlog_fatal_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_FATAL, format, args)
 #define vzlog_error(cat, format, args) \
+	if (zlog_error_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_ERROR, format, args)
 #define vzlog_warn(cat, format, args) \
+	if (zlog_warn_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_WARN, format, args)
 #define vzlog_notice(cat, format, args) \
+	if (zlog_notice_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_NOTICE, format, args)
 #define vzlog_info(cat, format, args) \
+	if (zlog_info_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_INFO, format, args)
 #define vzlog_debug(cat, format, args) \
+	if (zlog_debug_enabled(cat)) \
 	vzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_DEBUG, format, args)
 
 /* hzlog macros */
 #define hzlog_fatal(cat, buf, buf_len) \
+	if (zlog_fatal_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_FATAL, buf, buf_len)
 #define hzlog_error(cat, buf, buf_len) \
+	if (zlog_error_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_ERROR, buf, buf_len)
 #define hzlog_warn(cat, buf, buf_len) \
+	if (zlog_warn_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_WARN, buf, buf_len)
 #define hzlog_notice(cat, buf, buf_len) \
+	if (zlog_notice_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_NOTICE, buf, buf_len)
 #define hzlog_info(cat, buf, buf_len) \
+	if (zlog_info_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_INFO, buf, buf_len)
 #define hzlog_debug(cat, buf, buf_len) \
+	if (zlog_debug_enabled(cat)) \
 	hzlog(cat, __FILE__, sizeof(__FILE__)-1, __func__, sizeof(__func__)-1, __LINE__, \
 	ZLOG_LEVEL_DEBUG, buf, buf_len)
 
